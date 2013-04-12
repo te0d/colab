@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Colab::Application.config.secret_token = '2bc00c892bc2c80058f8ba95aef8977ce88f689485af76a0d801b0c97cf0b7cae2d9bd5c2d26b0820cee7f0ca894cc76fecfee67fc12950364e32a510a31036e'
+Colab::Application.config.secret_token = '0405fb0e97ef07ffd2b04085245ca086e399d4529d76ae4da2fcad5981f13e176000730383f2f0bbd56c55031bffaff6098f1e420d20e7a426b43762ea56d4b6'

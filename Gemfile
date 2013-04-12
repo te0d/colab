@@ -37,5 +37,8 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
-# User Authentication
+# user authentication
 gem 'devise'
+
+# for rails console to work
+gem 'minitest'
