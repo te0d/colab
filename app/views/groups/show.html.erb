@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @group.name %>
+</p>
+
+<p><strong>Users:</strong></p>
+
+<table>
+  <% for user in @users %>
+    <tr>
+      <td><%= user.email %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= form_tag(new_group_permission_path(@group.id), :method => 'get') do %>
+  <%= label_tag(:user_email, "User Email:") %>
+  <%= text_field_tag(:user_email) %>
+  <%= submit_tag("Add Permissions") %>
+<% end %>
+
+<%= link_to 'Edit', edit_group_path(@group) %> |
+<%= link_to 'Back', groups_path %>

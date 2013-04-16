@@ -11,16 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130412021451) do
+ActiveRecord::Schema.define(:version => 20130412204724) do
 
   create_table "groups", :force => true do |t|
     t.string   "name"
-    t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  add_index "groups", ["user_id"], :name => "index_groups_on_user_id"
+  create_table "permissions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.integer  "level"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "permissions", ["group_id"], :name => "index_permissions_on_group_id"
+  add_index "permissions", ["user_id"], :name => "index_permissions_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
