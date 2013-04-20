@@ -1,4 +1,7 @@
 Colab::Application.routes.draw do
+  resources :discussions
+
+
   resources :groups do
     resources :permissions
   end
