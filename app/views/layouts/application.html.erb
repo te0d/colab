@@ -8,11 +8,19 @@
 </head>
 <body>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <ul>
+    <%= render 'devise/menu/account_links' %>
+    <%= render 'devise/menu/login_links' %>
+  </ul>
+  
+  <% if notice || alert %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+  <% end %>
 
-
-<%= yield %>
+  <div class="container">
+    <%= yield %>
+  </div>
 
 </body>
 </html>

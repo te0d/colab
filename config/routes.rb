@@ -4,7 +4,10 @@ Colab::Application.routes.draw do
   end
 
 
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "registrations"}
+  scope "/admin" do
+    resources :users
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

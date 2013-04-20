@@ -42,3 +42,9 @@ gem 'devise'
 
 # for rails console to work
 gem 'minitest'
+
+# Twitter's CSS framework
+gem "bootstrap-sass"
+
+# for email (consider actionmailer)
+gem "pony"

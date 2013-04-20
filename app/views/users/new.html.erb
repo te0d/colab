@@ -1,0 +1,6 @@
+<h1>Create User</h1>
+<%= form_for @user do |f| %>
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, :autofocus => true %></div>
+  <div><%= f.submit "Create User" %></div>
+<% end %>

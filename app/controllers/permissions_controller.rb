@@ -30,7 +30,10 @@ class PermissionsController < ApplicationController
     @user = User.where(:email => params[:user_email]).first
 
     respond_to do |format|
-      if @user
+      if Permission.where(:group_id => @group.id, :user_id => @user.id).exists?
+        format.html { redirect_to(@group, :notice => 'User already exists.') }
+        format.json { render json: group_url(@group) }
+      elsif @user
         format.html # new.html.erb
         format.json { render json: @permission }
       else
@@ -85,7 +88,7 @@ class PermissionsController < ApplicationController
     @permission.destroy
 
     respond_to do |format|
-      format.html { redirect_to permissions_url }
+      format.html { redirect_to group_url(params[:group_id]) }
       format.json { head :no_content }
     end
   end
