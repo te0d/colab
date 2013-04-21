@@ -2,8 +2,8 @@ class GroupsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @groups = Group.all
-
+    @groups = current_user.groups
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @groups }
@@ -46,6 +46,8 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
+        @admin_permission = Permission.new(:group_id => @group.id, :user_id => current_user.id, :level => 5)
+        @admin_permission.save
         format.html { redirect_to @group, notice: 'Group was successfully created.' }
         format.json { render json: @group, status: :created, location: @group }
       else

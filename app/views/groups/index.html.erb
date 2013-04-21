@@ -1,23 +1,16 @@
-<h1>Listing groups</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<h1>Your Groups <%= link_to 'New Group', new_group_path, :class => "btn btn-success pull-right" %></h1>
 
 <% @groups.each do |group| %>
-  <tr>
-    <td><%= group.name %></td>
-    <td><%= link_to 'Show', group %></td>
-    <td><%= link_to 'Edit', edit_group_path(group) %></td>
-    <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+  <div class="row well">
+    <div class="span4">
+      <h2><%= link_to group.name, group %></h2>
+      <p><%= link_to 'Edit', edit_group_path(group), :class => "btn" %></p>
+    </div>
+    <div class="span4">
+      <h3>New Discussions</h3>
+    </div>
+    <div class="span4">
+      <h3>Next Event</h3>
+    </div>
+  </div>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Group', new_group_path %>
