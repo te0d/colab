@@ -57,7 +57,7 @@ class UsersController < ApplicationController
   private
 
   def require_admin_priv
-    unless current_user.permissions.where(:group_id => 1, :level => 5)
+    unless current_user.has_permission(1, 5)
       flash[:error] = "You must be an administrator to do this."
       redirect_to groups_url, :notice => "You must be an administrator to do this."
     end

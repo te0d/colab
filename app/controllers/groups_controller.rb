@@ -1,8 +1,10 @@
 class GroupsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :require_admin_priv, :only => [:new, :edit, :create, :update, :destroy]
 
   def index
     @groups = current_user.groups
+    @permissions = current_user.permissions 
     
     respond_to do |format|
       format.html # index.html.erb
@@ -82,6 +84,15 @@ class GroupsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to groups_url }
       format.json { head :no_content }
+    end
+  end
+  
+  private
+  
+  def require_admin_priv
+    unless current_user.has_permission(1, 5)
+      flash[:error] = "You must be an administrator to do this."
+      redirect_to groups_url, :notice => "You must be an administrator to do this."
     end
   end
 end

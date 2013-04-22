@@ -1,10 +1,14 @@
-<h1>Your Groups <%= link_to 'New Group', new_group_path, :class => "btn btn-success pull-right" %></h1>
+<h1>
+  Your Groups
+  <% if current_user.has_permission(1, 5) %>
+    <%= link_to 'New Group', new_group_path, :class => "btn btn-success pull-right" %>
+  <% end %>
+</h1>
 
 <% @groups.each do |group| %>
   <div class="row well">
     <div class="span4">
       <h2><%= link_to group.name, group %></h2>
-      <p><%= link_to 'Edit', edit_group_path(group), :class => "btn" %></p>
     </div>
     <div class="span4">
       <h3>New Discussions</h3>

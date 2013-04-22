@@ -15,8 +15,8 @@
     <td><%= permission.user %></td>
     <td><%= permission.group %></td>
     <td><%= permission.level %></td>
-    <td><%= link_to 'Show', permission %></td>
-    <td><%= link_to 'Edit', edit_permission_path(permission) %></td>
+    <td><%= link_to 'Show', group_permission_url(@group.id) %></td>
+    <td><%= link_to 'Edit', edit_group_permission_path(@group, permission) %></td>
     <td><%= link_to 'Destroy', permission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
@@ -24,4 +24,4 @@
 
 <br />
 
-<%= link_to 'New Permission', new_permission_path %>
+<%= link_to 'New Permission', new_group_permission_path(@group.id) %>

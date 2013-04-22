@@ -2,7 +2,8 @@ class PermissionsController < ApplicationController
   # GET /permissions
   # GET /permissions.json
   def index
-    @permissions = Permission.all
+    @group = Group.find(params[:group_id])
+    @permissions = @group.permissions
 
     respond_to do |format|
       format.html # index.html.erb
