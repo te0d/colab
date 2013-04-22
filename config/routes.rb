@@ -1,5 +1,7 @@
 Colab::Application.routes.draw do
-  resources :discussions
+  resources :discussions do
+    resources :posts
+  end
 
 
   resources :groups do

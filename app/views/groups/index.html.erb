@@ -12,6 +12,11 @@
     </div>
     <div class="span4">
       <h3>New Discussions</h3>
+      <ul>
+      <% for discussion in group.discussions.last(3) %>
+        <li><%= discussion.name %></li>
+      <% end %>
+      </ul>
     </div>
     <div class="span4">
       <h3>Next Event</h3>

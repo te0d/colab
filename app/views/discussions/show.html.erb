@@ -1,20 +1,27 @@
-<p id="notice"><%= notice %></p>
+<h1><small><%= @group.name %>:</small> <%= @discussion.name %></h1>
 
-<p>
-  <b>Group:</b>
-  <%= @discussion.group %>
-</p>
+<p><%= @discussion.description %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @discussion.name %>
-</p>
+<% for post in @posts %>
+  <div class="row">
+    <div class="span3">
+      <h4><%= post.user.email %></h4>
+    </div>
+    <div class="span9">
+      <p><%= post.content %></p>
+    </div>
+  </div>
+<% end %>
 
-<p>
-  <b>Description:</b>
-  <%= @discussion.description %>
-</p>
-
+<%= form_for([@discussion, @discussion.posts.build]) do |f| %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <div class="field">
+    <%= f.text_field :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
 
 <%= link_to 'Edit', edit_discussion_path(@discussion) %> |
 <%= link_to 'Back', discussions_path %>

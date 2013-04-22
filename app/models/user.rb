@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   
   has_many :permissions
   has_many :groups, :through => :permissions
+  has_many :posts
   
   def has_permission(group_id, level)
     permissions = self.permissions.where(:group_id => group_id)

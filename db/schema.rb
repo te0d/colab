@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130420004551) do
+ActiveRecord::Schema.define(:version => 20130422193030) do
 
   create_table "discussions", :force => true do |t|
     t.integer  "group_id"
@@ -39,6 +39,17 @@ ActiveRecord::Schema.define(:version => 20130420004551) do
 
   add_index "permissions", ["group_id"], :name => "index_permissions_on_group_id"
   add_index "permissions", ["user_id"], :name => "index_permissions_on_user_id"
+
+  create_table "posts", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "discussion_id"
+    t.text     "content"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "posts", ["discussion_id"], :name => "index_posts_on_discussion_id"
+  add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

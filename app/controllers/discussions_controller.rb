@@ -14,6 +14,8 @@ class DiscussionsController < ApplicationController
   # GET /discussions/1.json
   def show
     @discussion = Discussion.find(params[:id])
+    @group = Group.find(@discussion.group_id)
+    @posts = @discussion.posts.includes(:user)
 
     respond_to do |format|
       format.html # show.html.erb

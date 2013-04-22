@@ -3,7 +3,7 @@ class GroupsController < ApplicationController
   before_filter :require_admin_priv, :only => [:new, :edit, :create, :update, :destroy]
 
   def index
-    @groups = current_user.groups
+    @groups = current_user.groups.includes(:discussions)
     @permissions = current_user.permissions 
     
     respond_to do |format|
