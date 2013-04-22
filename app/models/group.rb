@@ -5,4 +5,5 @@ class Group < ActiveRecord::Base
   has_many :users, :through => :permissions
   
   has_many :discussions
+  has_many :events
 end

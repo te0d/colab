@@ -6,6 +6,7 @@ Colab::Application.routes.draw do
 
   resources :groups do
     resources :permissions
+    resources :events
   end
 
 

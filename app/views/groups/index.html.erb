@@ -7,14 +7,14 @@
 
 <% @groups.each do |group| %>
   <div class="row well">
-    <div class="span4">
+    <div class="span3">
       <h2><%= link_to group.name, group %></h2>
     </div>
     <div class="span4">
       <h3>New Discussions</h3>
       <ul>
       <% for discussion in group.discussions.last(3) %>
-        <li><%= discussion.name %></li>
+        <li><%= link_to discussion.name, discussion %></li>
       <% end %>
       </ul>
     </div>

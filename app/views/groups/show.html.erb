@@ -6,11 +6,14 @@
   </h1>
 
 <div class="row">
+
   <div class="span6">
     <h3>Discussions</h3>
     <% for discussion in @group.discussions %>
       <p><%= link_to discussion.name, discussion %></p>
     <% end %>
+    
+    <h4>Create New Discussion</h4>
     <%= form_for(@group.discussions.build) do |f| %>
       <%= f.hidden_field :group_id, :value => @group.id %>
       <div class="field">
@@ -26,8 +29,36 @@
       </div>
     <% end %>
   </div>
+  
   <div class="span6">
     <h3>Upcoming Events</h3>
+    <ul>
+    <% for event in @events %>
+      <li><%= event.name %></li>
+    <% end %>
+    </ul>
+    <%= form_for([@group, @group.events.build]) do |f| %>
+      <div class="field">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
+      <div class="field">
+        <%= f.label :description %>
+        <%= f.text_area :description %>
+      </div>
+      <div class="field">
+        <%= f.label :where %>
+        <%= f.text_field :where %>
+      </div>
+      <div class="field">
+        <%= f.label :when %>
+        <%= f.datetime_select :when %>
+      </div>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
   </div>
 </div>
 

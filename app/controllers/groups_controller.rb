@@ -3,8 +3,8 @@ class GroupsController < ApplicationController
   before_filter :require_admin_priv, :only => [:new, :edit, :create, :update, :destroy]
 
   def index
+    @permissions = current_user.permissions
     @groups = current_user.groups.includes(:discussions)
-    @permissions = current_user.permissions 
     
     respond_to do |format|
       format.html # index.html.erb
@@ -18,6 +18,7 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @permissions = @group.permissions
     @users = @group.users
+    @events = @group.events
 
     respond_to do |format|
       format.html # show.html.erb
