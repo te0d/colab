@@ -1,2 +1,14 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1><small>Users:</small> <%= @user.email %></h1>
+
+<table>
+<tr>
+  <th>Group</th>
+  <th>Level</th>
+</tr>
+<% for permission in @permissions %>
+<tr>
+  <td><%= permission.group.name %><td>
+  <td><%= permission.level %></td>
+</tr>
+<% end %>
+</table>

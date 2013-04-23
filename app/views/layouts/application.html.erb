@@ -11,10 +11,15 @@
   <div class="navbar">
     <div class="navbar-inner">
       <%= link_to "CoLab", root_url, :class => "brand" %>
+      <% if user_signed_in? %>
       <ul class="nav">
         <li><%= link_to "Groups", groups_url %></li>
         <li><%= link_to "Discussions", discussions_url %></li>
+        <% if current_user.has_permission(1, 5) %>
+          <li><%= link_to "Users", users_url %></li>
+        <% end %>
       </ul>
+      <% end %>
       <ul class="nav pull-right">
         <%= render 'devise/menu/account_links' %>
         <%= render 'devise/menu/login_links' %>

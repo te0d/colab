@@ -3,7 +3,7 @@
 <table>
 <% for user in @users %>
   <tr>
-    <td><%= user.email %></td>
+    <td><%= link_to user.email, user %></td>
   </tr>
 <% end %>
 </table>

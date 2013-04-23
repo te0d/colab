@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @permissions = @user.permissions.includes(:group)
   end
 
   def edit
