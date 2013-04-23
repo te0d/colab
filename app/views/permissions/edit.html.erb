@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @permission %> |
-<%= link_to 'Back', permissions_path %>
+<%= link_to 'Show', group_permission_url(@permission.group, @permission) %> |
+<%= link_to 'Back', group_permissions_path(@permission.group) %>

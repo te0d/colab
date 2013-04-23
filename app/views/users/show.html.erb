@@ -4,11 +4,13 @@
 <tr>
   <th>Group</th>
   <th>Level</th>
+  <th></th>
 </tr>
 <% for permission in @permissions %>
 <tr>
   <td><%= permission.group.name %><td>
   <td><%= permission.level %></td>
+  <td><%= link_to 'Edit', edit_group_permission_url(permission.group, permission) %>
 </tr>
 <% end %>
 </table>

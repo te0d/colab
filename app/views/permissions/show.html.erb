@@ -1,13 +1,11 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>User:</b>
-  <%= @permission.user %>
+  <%= @permission.user.email %>
 </p>
 
 <p>
   <b>Group:</b>
-  <%= @permission.group %>
+  <%= @permission.group.name %>
 </p>
 
 <p>
@@ -16,5 +14,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_permission_path(@permission) %> |
-<%= link_to 'Back', permissions_path %>
+<%= link_to 'Edit', edit_group_permission_path(@permission.group, @permission) %> |
+<%= link_to 'Back', group_permissions_path(@permission.group, @permission) %>

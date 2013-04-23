@@ -1,27 +1,21 @@
-<h1>Listing permissions</h1>
+<h1><small>Group > <%= @group.name %> ></small> Permissions</h1>
 
 <table>
   <tr>
     <th>User</th>
-    <th>Group</th>
     <th>Level</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
-<% @permissions.each do |permission| %>
+<% for permission in @permissions %>
   <tr>
-    <td><%= permission.user %></td>
-    <td><%= permission.group %></td>
+    <td><%= permission.user.email %></td>
     <td><%= permission.level %></td>
-    <td><%= link_to 'Show', group_permission_url(@group.id) %></td>
-    <td><%= link_to 'Edit', edit_group_permission_path(@group, permission) %></td>
-    <td><%= link_to 'Destroy', permission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Show', group_permission_url(@group, permission) %></td>
+      <td><%= link_to 'Edit', edit_group_permission_path(@group, permission) %></td>
+      <td><%= link_to 'Destroy', [@group, permission], method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Permission', new_group_permission_path(@group.id) %>

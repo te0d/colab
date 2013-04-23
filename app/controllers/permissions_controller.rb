@@ -57,7 +57,7 @@ class PermissionsController < ApplicationController
 
     respond_to do |format|
       if @permission.save
-        format.html { redirect_to group_permission_url(@permission), notice: 'Permission was successfully created.' }
+        format.html { redirect_to group_permission_url(@permission.group, @permission), notice: 'Permission was successfully created.' }
         format.json { render json: @permission, status: :created, location: @permission }
       else
         format.html { render action: "new" }
@@ -73,7 +73,7 @@ class PermissionsController < ApplicationController
 
     respond_to do |format|
       if @permission.update_attributes(params[:permission])
-        format.html { redirect_to @permission, notice: 'Permission was successfully updated.' }
+        format.html { redirect_to [@permission.group, @permission], notice: 'Permission was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
