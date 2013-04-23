@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :require_admin_priv
+  before_filter :require_admin_priv, :except => [:edit, :update]
 
   def index
     @users = User.all
@@ -50,6 +50,13 @@ class UsersController < ApplicationController
   end
   
   def update
+    @user = User.find(params[:id])
+    
+    if @user.update_with_password(params[:user])
+      redirect_to root_url, :notice => 'Password successfully updated.'
+    else
+      redirect_to root_url, :notice => 'Password update failed.'
+    end
   end
 
   def destroy
