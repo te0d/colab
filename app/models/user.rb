@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   
   has_many :permissions
   has_many :groups, :through => :permissions
+  has_many :discussions, :through => :groups
+  has_many :events, :through => :groups
   has_many :posts
   
   def has_permission(group_id, level)

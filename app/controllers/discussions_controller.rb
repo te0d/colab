@@ -1,8 +1,8 @@
 class DiscussionsController < ApplicationController
-  # GET /discussions
-  # GET /discussions.json
+  before_filter :authenticate_user!
+  
   def index
-    @discussions = Discussion.all
+    @discussions = current_user.discussions.includes(:group, :posts).reverse
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,26 +1,25 @@
-<h1>Listing discussions</h1>
-
-<table>
-  <tr>
-    <th>Group</th>
-    <th>Name</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<h1>Discussions</h1>
 
 <% @discussions.each do |discussion| %>
-  <tr>
-    <td><%= discussion.group %></td>
-    <td><%= discussion.name %></td>
-    <td><%= discussion.description %></td>
-    <td><%= link_to 'Show', discussion %></td>
-    <td><%= link_to 'Edit', edit_discussion_path(discussion) %></td>
-    <td><%= link_to 'Destroy', discussion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+  <div class="row">
+    <div class="span4">
+      <h3><%= link_to discussion.name, discussion %></h3>
+      <p><em><%= discussion.group.name %></em></p>
+      <p><%= discussion.description %></p>
+    </div>
+    <div class="span6">
+      <% unless discussion.posts.empty? %>
+        <h4>Most Recent Post</h4>
+        <% newest_post = discussion.posts.last %>
+        <p><%= newest_post.content %></p>
+      <% end %>
+    </div>
+    <div class="span2">
+      <h4>Post Count</h4>
+      <p><%= discussion.posts.length %></p>
+    </div>
+  </div>
 <% end %>
-</table>
 
 <br />
 
