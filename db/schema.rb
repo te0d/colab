@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130422210222) do
+ActiveRecord::Schema.define(:version => 20130423223927) do
 
   create_table "discussions", :force => true do |t|
     t.integer  "group_id"
@@ -37,8 +37,9 @@ ActiveRecord::Schema.define(:version => 20130422210222) do
 
   create_table "groups", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "is_default", :default => false
   end
 
   create_table "permissions", :force => true do |t|

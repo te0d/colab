@@ -1,5 +1,5 @@
 class Group < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :is_default
   
   has_many :permissions
   has_many :users, :through => :permissions

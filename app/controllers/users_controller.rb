@@ -43,6 +43,13 @@ class UsersController < ApplicationController
 
     
     if @user.save
+      for group in Group.where(:is_default => true)
+        permission = @user.permissions.new
+        permission.group = group
+        permission.level = 1
+        permission.save
+      end
+      
       redirect_to users_path, :notice => "User created."
     else
       redirect_to users_path, :notice => "User could not be created."
