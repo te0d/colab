@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
 
   def index
     @permissions = current_user.permissions
-    @groups = current_user.groups.includes(:discussions)
+    @groups = current_user.groups.includes(:discussions, :events)
     
     respond_to do |format|
       format.html # index.html.erb

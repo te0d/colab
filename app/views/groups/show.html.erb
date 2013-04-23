@@ -37,27 +37,30 @@
       <li><%= event.name %></li>
     <% end %>
     </ul>
-    <%= form_for([@group, @group.events.build]) do |f| %>
-      <div class="field">
-        <%= f.label :name %>
-        <%= f.text_field :name %>
-      </div>
-      <div class="field">
-        <%= f.label :description %>
-        <%= f.text_area :description %>
-      </div>
-      <div class="field">
-        <%= f.label :where %>
-        <%= f.text_field :where %>
-      </div>
-      <div class="field">
-        <%= f.label :when %>
-        <%= f.datetime_select :when %>
-      </div>
-      </div>
-      <div class="actions">
-        <%= f.submit %>
-      </div>
+    
+    <% if current_user.has_permission(@group.id, 5) %>
+      <%= form_for([@group, @group.events.build]) do |f| %>
+        <div class="field">
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+        </div>
+        <div class="field">
+          <%= f.label :description %>
+          <%= f.text_area :description %>
+        </div>
+        <div class="field">
+          <%= f.label :where %>
+          <%= f.text_field :where %>
+        </div>
+        <div class="field">
+          <%= f.label :when %>
+          <%= f.datetime_select :when %>
+        </div>
+        </div>
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>

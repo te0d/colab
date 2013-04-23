@@ -20,6 +20,13 @@
     </div>
     <div class="span4">
       <h3>Next Event</h3>
+      <% unless group.events.empty? %>
+        <% newest_event = group.events.last %>
+        <h4><%= newest_event.name %></h4>
+        <p><%= newest_event.description %></p>
+        <p>Where: <%= newest_event.where %></p>
+        <p>When: <%= newest_event.when %></p>
+      <% end %>
     </div>
   </div>
 <% end %>
