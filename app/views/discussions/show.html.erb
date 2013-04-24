@@ -13,18 +13,16 @@
   </div>
 <% end %>
 
-<div class="row">
 <%= form_for([@discussion, @discussion.posts.build]) do |f| %>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <div class="field">
-    <%= f.text_area :content, :cols => "80", :rows => "20" %>
+    <%= f.text_area :content, :cols => 40, :rows => 3 %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
 
-</div>
 
 <%= link_to 'Edit', edit_discussion_path(@discussion) %> |
 <%= link_to 'Back', discussions_path %>

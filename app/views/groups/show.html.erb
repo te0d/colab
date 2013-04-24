@@ -46,7 +46,7 @@
         </div>
         <div class="field">
           <%= f.label :description %>
-          <%= f.text_area :description %>
+          <%= f.text_area :description, :cols => 40, :rows => 4 %>
         </div>
         <div class="field">
           <%= f.label :where %>
@@ -55,7 +55,6 @@
         <div class="field">
           <%= f.label :when %>
           <%= f.datetime_select :when %>
-        </div>
         </div>
         <div class="actions">
           <%= f.submit %>
