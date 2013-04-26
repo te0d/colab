@@ -10,11 +10,10 @@ task :email_digest => :environment do
     # check for posts written within the past day (tentative)
     for discussion in user.discussions
       new_posts = discussion.posts.where(:created_at => (Time.now - 1.day)..(Time.now))
-      group_name = discussion.group.name
       
       # if there are new posts, write the discussion name and the new posts
       unless new_posts.empty?
-        msg_content += ">> #{group.name} > #{discussion.name}\n"
+        msg_content += ">> #{discussion.group.name} > #{discussion.name}\n"
       
         for post in new_posts
           msg_content += "   # #{post.user.email}:  #{post.content}\n"
