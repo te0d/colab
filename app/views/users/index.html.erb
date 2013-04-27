@@ -1,9 +1,14 @@
-<h1>User List</h1>
+<h1>User List<%= link_to "Create User", new_user_path, :class => "btn btn-primary btn-success pull-right" %> </h1>
 
-<table>
+<table class="table">
+<tr>
+  <th>Email</th>
+  <th>Groups</th>
+</tr>
 <% for user in @users %>
   <tr>
     <td><%= link_to user.email, user %></td>
+    <td><%= user.groups.count %></td>
   </tr>
 <% end %>
 </table>
